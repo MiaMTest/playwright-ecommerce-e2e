@@ -1,0 +1,26 @@
+[
+    {
+        "testName": "successful Registration",
+        "isSuccess": true,
+        "firstName": "Alice",
+        "lastName": "Hanks",
+        "emailPrefix": "aliceH",
+        "phone": "4445556666",
+        "occupation": "Engineer",
+        "gender": "Male",
+        "password": "111Oooo!",
+        "expectedMessage": "Account Created Successfully"
+    },
+    {
+        "testName": "Missing last name input Alert",
+        "isSuccess":false,
+        "firstName": "Tom",
+        "lastName": "",
+        "emailPrefix": "tomH",
+        "phone": "4445556666",
+        "occupation": "Scientist",
+        "gender": "Female",
+        "password": "111Oooo!",
+        "expectedMessage":"Last name is required!"
+    }
+]
