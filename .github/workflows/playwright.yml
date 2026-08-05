@@ -20,12 +20,6 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Debug workspace
-      run: |
-         pwd
-          ls -la
-          ls -la playwright || true
-          ls -la playwright/.auth || true
     - name: Run Playwright tests
       env:
         PLAYWRIGHT_SERVICE_URL: ${{ vars.PLAYWRIGHT_SERVICE_URL }}

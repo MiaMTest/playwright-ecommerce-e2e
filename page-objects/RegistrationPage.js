@@ -20,16 +20,12 @@ export class RegistrationPage {
 
     }
 
-    async RegisterHeader() {
+    async getRegisterHeader() {
         return this.registerHeader;
     }
 
-    //Using Object Destructuring: wrap parameters in curly braces inside function definition
-
     async fillRegistrationForm({ firstName, lastName, emailPrefix, phone, occupation, gender, password }) {
-
-        //Overwrite the static email string with a unique timestamped email
-        const email =`${emailPrefix}_${Date.now()}@example.com`;
+        const email = `${emailPrefix}_${Date.now()}@example.com`;
 
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);

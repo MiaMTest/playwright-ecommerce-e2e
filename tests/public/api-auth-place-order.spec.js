@@ -21,16 +21,13 @@ test('place order', async ({ page }) => {
         window.localStorage.setItem('token', value);
     }, response.token);
 
-    //validate order details payge
     await page.goto('#/dashboard/myorders');
-    //test scenario: validate order created
     const orderPage = new OrderPage(page);
     await expect(orderPage.yourOrdersText).toBeVisible();
-    await expect(orderPage.orderRowHeader(response.orderId)).toBeVisible;
+    await expect(orderPage.orderRowHeader(response.orderId)).toBeVisible();
 
-    //delete order created
     await orderPage.deleteOrder(response.orderId);
     const rowHeader = orderPage.orderIdList.filter({ hasText: response.orderId });
-    await expect(rowHeader.isDisplayed).toBeFalsy();
+    await expect(rowHeader).toHaveCount(0);
 
 })

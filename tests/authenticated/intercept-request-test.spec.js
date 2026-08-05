@@ -4,12 +4,10 @@ import { ApiUtils } from '../../utils/ApiUtils';
 import apiData from '../../data/apiData.json';
 
 test.beforeAll(async ({ request }) => {
-
     const apiUtils = new ApiUtils(request);
-    //using API to get token and create order
-  await apiUtils.createOrder(apiData.createOrderPayload);
+    await apiUtils.createOrder(apiData.createOrderPayload);
+});
 
-})
 test('Security test of intercepting an outgoing API request', async ({ page }) => {
     await page.goto('#/dashboard/myorders');
     const orderPage = new OrderPage(page);
@@ -31,6 +29,5 @@ test('Security test of intercepting an outgoing API request', async ({ page }) =
     //Trigger action that makes the network request
     await orderPage.viewOrder();
     await expect(orderPage.notAuthorizedText).toHaveText('You are not authorize to view this order');
-
-})
+});
 

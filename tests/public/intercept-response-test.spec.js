@@ -22,25 +22,13 @@ test('Intercept and mock no order on the list', async ({ page }) => {
         window.localStorage.setItem('token', value);
     }, response.token);
 
-    //Intercept network response call
-    await page.route('https://rahulshettyacademy.com/api/ecom/order/get-orders-for-customer/*',
-        async route => {
-
-           /*Intercepted Flow 1: 
-            Browser attempts to send request ->Playwright catches it->Playwright delivers fack JSON back 
-            The reall server never even knows a request was attempted*/
-
-            /*await route.fulfill({          //Fulfill the request with custom mock response
-                  body:JSON.stringify({         //Convert JS object to Json formatted string
-                    fakePayloadOrders
-                })
-            })*/
-
-
-            //Intercepted Flow 2:request hit the real server, get the real response, and then modify it 
-            const response = await route.fetch(); //fetch the live response data 
-            await route.fulfill({ response, json:fakePayloadOrders });//send mock response json payload to browser
+    await page.route('**/order/get-orders-for-customer/*', route =>
+        route.fulfill({
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(fakePayloadOrders),
         })
+    );
 
     await page.goto('#/dashboard/myorders');
     const orderPage = new OrderPage(page);
