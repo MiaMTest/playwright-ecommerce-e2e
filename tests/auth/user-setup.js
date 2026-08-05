@@ -4,12 +4,13 @@ import apiData from '../../data/apiData.json'
 //import Nodes's fs module to format the file exactly expect
 import fs from 'fs';
 import { LoginPage } from '../../page-objects/LoginPage';
+import path from 'path';
 
 //Define where the session token/cookies should be saved locally
 const STORAGE_STATE = 'playwright/.auth/user.json';
 
 //API authentication
-setup('Authenticate User',async ({request}) =>{
+setup('Authenticate User', async ({ request }) => {
     const apiUtils = new ApiUtils(request);
     const token = await apiUtils.getToken(apiData.loginPayload);
 
@@ -26,9 +27,11 @@ setup('Authenticate User',async ({request}) =>{
             }
         ]
     };
+    // Create playwright/.auth if it doesn't exist
+    fs.mkdirSync(path.dirname(STORAGE_STATE), { recursive: true });
 
     // Write it directly to the disk
-    fs.writeFileSync(STORAGE_STATE, JSON.stringify(statePayload, null,2));
+    fs.writeFileSync(STORAGE_STATE, JSON.stringify(statePayload, null, 2));
 })
 
 //UI Authentication
