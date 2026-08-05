@@ -10,7 +10,7 @@ test.beforeAll(async ({ request }) => {
   await apiUtils.createOrder(apiData.createOrderPayload);
 
 })
-test.only('Security test of intercepting an outgoing API request', async ({ page }) => {
+test('Security test of intercepting an outgoing API request', async ({ page }) => {
     await page.goto('#/dashboard/myorders');
     const orderPage = new OrderPage(page);
     await page.locator('[routerlink="/dashboard/myorders"]').click();

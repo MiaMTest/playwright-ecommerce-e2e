@@ -14,7 +14,7 @@ export default defineConfig({
     baseURL: 'https://rahulshettyacademy.com/client/',
     browserName: 'chromium',
     trace: 'retain-on-failure',
-    headless: false,
+    headless: true,
 
   },
 
