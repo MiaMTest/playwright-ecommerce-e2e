@@ -14,7 +14,7 @@ export class CheckoutPage {
     }
 
     async selectCountry(searchValue, countryName) {
-        await this.countryInput.fill(searchValue);
+        await this.countryInput.pressSequentially(searchValue);
         const option = this.getCountryOption(countryName);
         await option.waitFor({ state: 'visible' });
         await option.click();

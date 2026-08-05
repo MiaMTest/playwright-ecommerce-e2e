@@ -2,7 +2,7 @@ export class ResetPasswordPage {
     constructor(page) {
         this.page = page;
         this.email = page.getByRole('textbox', { name: 'Enter your email address' });
-        this.password = page.getByRole('textbox', { name: 'Password' });
+        this.password = page.getByRole('textbox', { name: 'Passsword' });
         this.confirmPassword = page.getByRole('textbox', { name: 'Confirm Password' });
         this.saveNewPasswordBtn = page.getByRole('button', { name: 'Save New Password' });
         this.passwordChangedSuccessMsg = page.getByText('Password Changed Successfully');
