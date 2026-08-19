@@ -1,9 +1,9 @@
 import { test as setup } from '@playwright/test';
-import { ApiUtils } from '../../utils/ApiUtils';
-import apiData from '../../data/apiData.json'
+import { ApiUtils } from '../../utils/ApiUtils.js';
+import apiData from '../../data/apiData.json' with { type: 'json' };
 //import Nodes's fs module to format the file exactly expect
 import fs from 'fs';
-import { LoginPage } from '../../page-objects/LoginPage';
+import { LoginPage } from '../../page-objects/LoginPage.js';
 import path from 'path';
 
 //Define where the session token/cookies should be saved locally

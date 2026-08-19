@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ResetPasswordPage } from '../../page-objects/ResetPasswordPage';
+import { ResetPasswordPage } from '../../page-objects/ResetPasswordPage.js';
 
 test('reset password', async ({ page }) => {
     await page.goto('#/auth/password-new');

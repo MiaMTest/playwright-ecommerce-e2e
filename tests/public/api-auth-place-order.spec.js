@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
-import { OrderPage } from '../../page-objects/OrderPage';
+import { OrderPage } from '../../page-objects/OrderPage.js';
 import { ApiUtils } from '../../utils/ApiUtils.js'
-import apiData from '../../data/apiData.json'
+import apiData from '../../data/apiData.json' with { type: 'json' };
 
 let response;
 

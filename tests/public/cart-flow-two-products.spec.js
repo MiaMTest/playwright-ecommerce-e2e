@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../page-objects/LoginPage';
-import { ProductCategoryPage } from '../../page-objects/ProductCategoryPage';
-import { CartPage } from '../../page-objects/CartPage';
+import { LoginPage } from '../../page-objects/LoginPage.js';
+import { ProductCategoryPage } from '../../page-objects/ProductCategoryPage.js';
+import { CartPage } from '../../page-objects/CartPage.js';
 
-test.only('login, add two products, verify cart and total summary', async ({ page }) => {
+test('login, add two products, verify cart and total summary', async ({ page }) => {
     await page.goto('#/auth/login');
 
     const loginPage = new LoginPage(page);

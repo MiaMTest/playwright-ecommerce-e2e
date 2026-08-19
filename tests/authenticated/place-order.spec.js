@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test'
-import { ProductCategoryPage } from '../../page-objects/ProductCategoryPage';
-import { CartPage } from '../../page-objects/CartPage';
-import { CheckoutPage } from '../../page-objects/CheckoutPage';
-import { OrderConfirmationPage } from '../../page-objects/OrderConfirmationPage';
-import { OrderPage } from '../../page-objects/OrderPage';
-import apiData from '../../data/apiData.json';
+import { ProductCategoryPage } from '../../page-objects/ProductCategoryPage.js';
+import { CartPage } from '../../page-objects/CartPage.js';
+import { CheckoutPage } from '../../page-objects/CheckoutPage.js';
+import { OrderConfirmationPage } from '../../page-objects/OrderConfirmationPage.js';
+import { OrderPage } from '../../page-objects/OrderPage.js';
+import apiData from '../../data/apiData.json' with { type: 'json' };
 
 test('place order', async ({ page }) => {
     await page.goto('#/auth/login');
@@ -21,7 +21,7 @@ test('place order', async ({ page }) => {
 
     const cartPage = new CartPage(page);
     await expect(cartPage.myCartHeading).toBeVisible();
-    await expect(cartPage.productName).toHaveText(productName);
+    await expect(cartPage.productNames).toHaveText(productName);
     await cartPage.checkout();
 
     const checkoutPage = new CheckoutPage(page);

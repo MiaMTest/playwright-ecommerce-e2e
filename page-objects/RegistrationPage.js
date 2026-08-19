@@ -16,8 +16,14 @@ export class RegistrationPage {
         this.registerBtn = page.locator('input[value="Register"]');
         this.registrationSuccessMsg = page.getByRole('heading', { name: 'Account Created Successfully' });
         this.validationAlert = page.locator('[aria-label="Last Name is required!"]')
+        this.alertMessage = page.locator('div[role="alert"]');
+        //div[role="alert"]
 
-
+    }
+    async getAlertMessage() {
+        await this.alertMessage.waitFor({ state: 'visible' });
+        const text = await this.alertMessage.first().innerText();
+        return text.trim();
     }
 
     async getRegisterHeader() {
@@ -28,7 +34,8 @@ export class RegistrationPage {
         const email = `${emailPrefix}_${Date.now()}@example.com`;
 
         await this.firstNameInput.fill(firstName);
-        await this.lastNameInput.fill(lastName);
+        //Use OR (|| "") to ensure Playwright always get a string, even if data is missing
+        await this.lastNameInput.fill(lastName || "");
         await this.emailInput.fill(email);
         await this.phoneInput.fill(phone);
         await this.occupationDropdown.selectOption(occupation);

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { OrderPage } from '../../page-objects/OrderPage';
-import { ApiUtils } from '../../utils/ApiUtils';
-import apiData from '../../data/apiData.json';
+import { OrderPage } from '../../page-objects/OrderPage.js';
+import { ApiUtils } from '../../utils/ApiUtils.js';
+import apiData from '../../data/apiData.json' with { type: 'json' };
 
 test.beforeAll(async ({ request }) => {
     const apiUtils = new ApiUtils(request);

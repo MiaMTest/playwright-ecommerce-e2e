@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import apiData from '../data/apiData.json'
+import apiData from '../data/apiData.json' with { type: 'json' };
 
 
 export class ApiUtils {

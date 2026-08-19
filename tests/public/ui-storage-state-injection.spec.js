@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
-import { ProductCategoryPage } from '../../page-objects/ProductCategoryPage';
-import { CartPage } from '../../page-objects/CartPage';
-import { LoginPage } from '../../page-objects/LoginPage';
+import { ProductCategoryPage } from '../../page-objects/ProductCategoryPage.js';
+import { CartPage } from '../../page-objects/CartPage.js';
+import { LoginPage } from '../../page-objects/LoginPage.js';
 
 let authenticatedContext;
 
@@ -39,7 +39,7 @@ test('Add product in Cart', async () => {
 
     const cartPage = new CartPage(page);
     await expect(cartPage.myCartHeading).toBeVisible();
-    await expect(cartPage.productName).toHaveText(productName);
+    await expect(cartPage.productNames).toHaveText(productName);
     await cartPage.checkout();
     await page.close();
 })

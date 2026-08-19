@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { RegistrationPage } from '../../page-objects/RegistrationPage';
-import testData from '../../data/registrationData.json';
+import { RegistrationPage } from '../../page-objects/RegistrationPage.js';
+import testData from '../../data/registrationData.json' with { type: 'json' };
 
 
 //Loop through each user object in the JSON array
