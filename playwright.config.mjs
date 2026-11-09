@@ -3,7 +3,11 @@ import { chromium, defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  reporter: 'html',
+  //reporter: 'html',
+  reporter: [
+    ['line'],
+    ['allure-playwright', { outputFolder: 'allure-results' }]
+  ],
   timeout: 40 * 1000,
   expect: {
     timeout: 5000,
@@ -17,7 +21,7 @@ export default defineConfig({
     headless: true,
 
   },
-
+ 
   projects: [
     {
       name: 'setup',
